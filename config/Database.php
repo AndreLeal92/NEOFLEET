@@ -26,7 +26,7 @@ class Database
                 if (ini_get('display_errors')) {
                     die("Erro na conexão: " . $e->getMessage());
                 } else {
-                    die("Erro ao conectar ao banco de dados.");
+                    die("Erro: " . $e->getMessage());
                 }
             }
         }
