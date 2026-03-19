@@ -11,7 +11,7 @@ class Database
             $host   = "localhost";
             $dbname = "and28477_neofleet";
             $user   = "and28477_neofleet_user";
-            $pass   = "UAubbe(2V1*ZGR.hfF";
+            $pass   = "M9{l+{QJWftM"; // 🔥 coloque a mesma senha do cPanel
 
             $dsn = "mysql:host={$host};dbname={$dbname};charset=utf8mb4";
 
@@ -23,11 +23,8 @@ class Database
                 ]);
             } catch (PDOException $e) {
 
-                if (ini_get('display_errors')) {
-                    die("Erro na conexão: " . $e->getMessage());
-                } else {
-                    die("Erro: " . $e->getMessage());
-                }
+                // 🔧 TEMPORÁRIO (para debug)
+                die("Erro: " . $e->getMessage());
             }
         }
 
