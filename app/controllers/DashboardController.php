@@ -1,9 +1,9 @@
-<?php
+    <?php
 
-class DashboardController
-{
-    public function index()
+    class DashboardController
     {
-        require __DIR__ . '/../views/dashboard.php';
+        public function index()
+        {
+            require __DIR__ . '/../views/dashboard.php';
+        }
     }
-}

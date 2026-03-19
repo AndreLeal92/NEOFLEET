@@ -21,7 +21,7 @@ ini_set('session.cookie_httponly', 1);
 ini_set('session.use_only_cookies', 1);
 
 // ============================
-// AUTOLOAD SIMPLES
+// AUTOLOAD (MANUAL)
 // ============================
 
 require_once __DIR__ . '/../core/Router.php';
@@ -63,11 +63,11 @@ $router->get('/', function () {
     exit;
 }, ['auth']);
 
-// DASHBOARD (AGORA CORRETO 🔥)
+// DASHBOARD (MVC CORRETO 🔥)
 $router->get('/dashboard', [$dashboard, 'index'], ['auth', 'tenant']);
 
 // ============================
-// FALLBACK (404)
+// 404 (fallback)
 // ============================
 
 $router->get('/404', function () {
