@@ -28,27 +28,19 @@ require_once __DIR__ . '/../core/Router.php';
 require_once __DIR__ . '/../core/Controller.php';
 
 require_once __DIR__ . '/../config/Database.php';
+
 require_once __DIR__ . '/../app/controllers/AuthController.php';
+require_once __DIR__ . '/../app/controllers/DashboardController.php';
+
 require_once __DIR__ . '/../app/models/User.php';
 
 // ============================
 // INSTÂNCIAS
 // ============================
 
-$router = new Router();
-$auth   = new AuthController();
-
-// ============================
-// MIDDLEWARE (função simples)
-// ============================
-
-function auth()
-{
-    if (!isset($_SESSION['user'])) {
-        header("Location: /login");
-        exit;
-    }
-}
+$router     = new Router();
+$auth       = new AuthController();
+$dashboard  = new DashboardController();
 
 // ============================
 // ROTAS PÚBLICAS
@@ -65,31 +57,17 @@ $router->get('/logout', [$auth, 'logout']);
 // ROTAS PROTEGIDAS
 // ============================
 
-// HOME (root → redireciona pro dashboard)
+// HOME → redireciona pro dashboard
 $router->get('/', function () {
-
-    auth();
-
     header("Location: /dashboard");
     exit;
-});
+}, ['auth']);
 
-// DASHBOARD
-$router->get('/dashboard', function () {
-
-    auth();
-
-    $user = $_SESSION['user'];
-
-    echo "<h1>Dashboard</h1>";
-    echo "<p>Bem-vindo, {$user['email']}</p>";
-    echo "<p>Tenant: " . ($user['tenant_id'] ?? 'N/A') . "</p>";
-    echo "<br>";
-    echo "<a href='/logout'>Sair</a>";
-});
+// DASHBOARD (AGORA CORRETO 🔥)
+$router->get('/dashboard', [$dashboard, 'index'], ['auth', 'tenant']);
 
 // ============================
-// FALLBACK (rota não encontrada)
+// FALLBACK (404)
 // ============================
 
 $router->get('/404', function () {
