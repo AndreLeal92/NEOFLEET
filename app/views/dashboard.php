@@ -1,13 +1,15 @@
 <?php require __DIR__ . '/layouts/header.php'; ?>
 <?php require __DIR__ . '/layouts/sidebar.php'; ?>
 
-<div class="content" style="padding:30px; background:#f8fafc; min-height:100vh;">
+<div class="content" style="margin-left:220px; padding:30px; background:#f8fafc; min-height:100vh;">
 
     <h1 style="margin-bottom:10px;">Dashboard</h1>
 
     <p style="color:#64748b; margin-bottom:30px;">
         Bem-vindo, <strong><?= $_SESSION['user']['email'] ?></strong>
     </p>
+
+    <hr style="margin-bottom:30px;">
 
     <!-- CARDS -->
     <div style="display:flex; gap:20px; flex-wrap:wrap;">
