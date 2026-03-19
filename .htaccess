@@ -1,5 +1,13 @@
 RewriteEngine On
 
-# redireciona tudo para public_html
-RewriteCond %{REQUEST_URI} !^/public_html/
+# PROTEGER .env
+<Files .env>
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Se já estiver dentro de public_html, para
+RewriteRule ^public_html/ - [L]
+
+# Redireciona tudo para public_html
 RewriteRule ^(.*)$ public_html/$1 [L]
