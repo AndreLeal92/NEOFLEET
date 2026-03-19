@@ -2,16 +2,25 @@
 
 require_once __DIR__ . '/../../config/Database.php';
 
-class AuthController {
-
-    public function loginForm() {
+class AuthController
+{
+    public function loginForm()
+    {
         require __DIR__ . '/../views/auth/login.php';
     }
 
-    public function login() {
-
+    public function authenticate()
+    {
+        // pega dados do form
         $email = $_POST['email'] ?? '';
         $password = $_POST['password'] ?? '';
+
+        // validação básica
+        if (empty($email) || empty($password)) {
+            $_SESSION['error'] = "Preencha todos os campos";
+            header("Location: /login");
+            exit;
+        }
 
         $db = Database::getConnection();
 
@@ -27,17 +36,33 @@ class AuthController {
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        // valida usuário
         if (!$user || !password_verify($password, $user['password'])) {
-            echo "Login inválido";
-            return;
+            $_SESSION['error'] = "Email ou senha inválidos";
+            header("Location: /login");
+            exit;
         }
 
-        session_start();
+        // 🔐 LOGIN OK
+        $_SESSION['user'] = [
+            'id' => $user['id'],
+            'email' => $user['email'],
+            'tenant_id' => $user['tenant_id'] ?? $user['company_id'] ?? null
+        ];
 
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['company_id'] = $user['company_id'];
+        header("Location: /dashboard");
+        exit;
+    }
 
-        header("Location: /");
+    public function logout()
+    {
+        // limpa sessão
+        $_SESSION = [];
+
+        // destrói sessão
+        session_destroy();
+
+        header("Location: /login");
         exit;
     }
 }

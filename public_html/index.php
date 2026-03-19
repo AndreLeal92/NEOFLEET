@@ -5,21 +5,31 @@
 // ============================
 
 // 🔒 produção → NÃO mostrar erros
-// (em desenvolvimento pode ativar)
 ini_set('display_errors', 0);
 error_reporting(E_ALL);
 
-// sessão global
+// ============================
+// SESSÃO GLOBAL
+// ============================
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+// segurança básica de sessão
+ini_set('session.cookie_httponly', 1);
+ini_set('session.use_only_cookies', 1);
 
 // ============================
 // AUTOLOAD SIMPLES
 // ============================
 
 require_once __DIR__ . '/../core/Router.php';
+require_once __DIR__ . '/../core/Controller.php';
+
+require_once __DIR__ . '/../config/Database.php';
 require_once __DIR__ . '/../app/controllers/AuthController.php';
+require_once __DIR__ . '/../app/models/User.php';
 
 // ============================
 // INSTÂNCIAS
@@ -29,11 +39,12 @@ $router = new Router();
 $auth   = new AuthController();
 
 // ============================
-// FUNÇÃO DE PROTEÇÃO (middleware)
+// MIDDLEWARE (função simples)
 // ============================
 
-function auth() {
-    if (!isset($_SESSION['user_id'])) {
+function auth()
+{
+    if (!isset($_SESSION['user'])) {
         header("Location: /login");
         exit;
     }
@@ -45,18 +56,45 @@ function auth() {
 
 // LOGIN
 $router->get('/login', [$auth, 'loginForm']);
-$router->post('/login', [$auth, 'login']);
+$router->post('/login', [$auth, 'authenticate']);
+
+// LOGOUT
+$router->get('/logout', [$auth, 'logout']);
 
 // ============================
 // ROTAS PROTEGIDAS
 // ============================
 
-// HOME (dashboard inicial)
-$router->get('/', function() {
+// HOME (root → redireciona pro dashboard)
+$router->get('/', function () {
 
-    auth(); // 🔒 protege
+    auth();
 
-    echo "NeoFleet SaaS ONLINE 🚀";
+    header("Location: /dashboard");
+    exit;
+});
+
+// DASHBOARD
+$router->get('/dashboard', function () {
+
+    auth();
+
+    $user = $_SESSION['user'];
+
+    echo "<h1>Dashboard</h1>";
+    echo "<p>Bem-vindo, {$user['email']}</p>";
+    echo "<p>Tenant: " . ($user['tenant_id'] ?? 'N/A') . "</p>";
+    echo "<br>";
+    echo "<a href='/logout'>Sair</a>";
+});
+
+// ============================
+// FALLBACK (rota não encontrada)
+// ============================
+
+$router->get('/404', function () {
+    http_response_code(404);
+    echo "Página não encontrada";
 });
 
 // ============================
