@@ -21,7 +21,7 @@
 <div class="login-wrapper">
 
 <div class="logo">
-<img src="/assets/images/Neofleet.png" alt="NeoFleet">
+<img src="/assets/images/Neofleet_branco.png" alt="NeoFleet">
 </div>
 
 <main class="container">
