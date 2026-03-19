@@ -14,8 +14,14 @@ $_SERVER['REQUEST_URI'] = $uri;
 
 $router = new Router();
 
+// HOME
 $router->get('/', function() {
     echo "NeoFleet SaaS ONLINE 🚀";
+});
+
+// LOGIN
+$router->get('/login', function() {
+    echo "TELA DE LOGIN 🚀";
 });
 
 $router->dispatch();
