@@ -7,12 +7,18 @@ class Router {
     // =========================
     // REGISTRO DE ROTAS
     // =========================
-    public function get($uri, $callback) {
-        $this->routes['GET'][$this->normalize($uri)] = $callback;
+    public function get($uri, $callback, $middlewares = []) {
+        $this->routes['GET'][$this->normalize($uri)] = [
+            'callback' => $callback,
+            'middlewares' => $middlewares
+        ];
     }
 
-    public function post($uri, $callback) {
-        $this->routes['POST'][$this->normalize($uri)] = $callback;
+    public function post($uri, $callback, $middlewares = []) {
+        $this->routes['POST'][$this->normalize($uri)] = [
+            'callback' => $callback,
+            'middlewares' => $middlewares
+        ];
     }
 
     // =========================
@@ -20,7 +26,6 @@ class Router {
     // =========================
     private function normalize($uri) {
 
-        // remove barra final (exceto raiz)
         if ($uri !== '/') {
             $uri = rtrim($uri, '/');
         }
@@ -40,10 +45,9 @@ class Router {
         // remove /index.php
         $uri = str_replace('/index.php', '', $uri);
 
-        // 🔥 remove /public_html (importante no seu caso)
+        // remove /public_html
         $uri = str_replace('/public_html', '', $uri);
 
-        // se vazio vira /
         if ($uri === '') {
             $uri = '/';
         }
@@ -55,9 +59,18 @@ class Router {
         // =========================
         if (isset($this->routes[$method][$uri])) {
 
-            $callback = $this->routes[$method][$uri];
+            $route = $this->routes[$method][$uri];
 
-            // Controller@method
+            // 🔥 EXECUTA MIDDLEWARES
+            if (!empty($route['middlewares'])) {
+                foreach ($route['middlewares'] as $middleware) {
+                    $this->runMiddleware($middleware);
+                }
+            }
+
+            $callback = $route['callback'];
+
+            // Controller
             if (is_array($callback)) {
                 return call_user_func($callback);
             }
@@ -71,5 +84,29 @@ class Router {
         // =========================
         http_response_code(404);
         echo "404 - Página não encontrada";
+    }
+
+    // =========================
+    // MIDDLEWARE EXECUTION
+    // =========================
+    private function runMiddleware($middleware)
+    {
+        switch ($middleware) {
+
+            case 'auth':
+                require_once __DIR__ . '/../app/middleware/AuthMiddleware.php';
+                AuthMiddleware::handle();
+                break;
+
+            case 'tenant':
+                require_once __DIR__ . '/../app/middleware/TenantMiddleware.php';
+                TenantMiddleware::handle();
+                break;
+
+            case 'admin':
+                require_once __DIR__ . '/../app/middleware/AdminMiddleware.php';
+                AdminMiddleware::handle();
+                break;
+        }
     }
 }
