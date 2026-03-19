@@ -1,6 +1,3 @@
-<?php die("CHEGOU NA VIEW CORRETA"); ?>
-
-
 <?php require __DIR__ . '/layouts/header.php'; ?>
 <?php require __DIR__ . '/layouts/sidebar.php'; ?>
 
