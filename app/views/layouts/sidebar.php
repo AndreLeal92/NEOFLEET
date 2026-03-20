@@ -5,12 +5,18 @@
     <hr>
 
     <nav>
-        <a href="/dashboard" class="active">📊 Dashboard</a>
-        <a href="/vehicles">🚚 Veículos</a>
+        <a href="/dashboard" class="<?= $_SERVER['REQUEST_URI'] == '/dashboard' ? 'active' : '' ?>">
+            📊 Dashboard
+        </a>
+
+        <a href="/vehicles" class="<?= $_SERVER['REQUEST_URI'] == '/vehicles' ? 'active' : '' ?>">
+            🚚 Veículos
+        </a>
     </nav>
 
-    <hr>
-
-    <a href="/logout" class="logout">🚪 Sair</a>
+    <div class="bottom">
+        <hr>
+        <a href="/logout" class="logout">🚪 Sair</a>
+    </div>
 
 </div>
