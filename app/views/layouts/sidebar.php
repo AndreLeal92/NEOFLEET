@@ -10,6 +10,22 @@
 
         <nav>
 
+         <!-- OPERAÇÃO -->
+            <div class="dropdown">
+
+                <a href="javascript:void(0)" onclick="toggleDropdown(this)">
+                    <span class="text">Operação</span>
+                    <span class="arrow">▶</span>
+                </a>
+
+                <div class="dropdown-menu">
+                    <a href="/vehicles/create">Nova Viagem</a>
+                    <a href="/vehicles/create">Lançamento Custos Viagens</a>
+                    <a href="/vehicles">Relação de Viagens</a>
+                </div>
+
+            </div>
+
             <!-- DASHBOARD -->
             <a href="/dashboard" class="<?= $_SERVER['REQUEST_URI'] == '/dashboard' ? 'active' : '' ?>">
                 <span class="text">Dashboard</span>
