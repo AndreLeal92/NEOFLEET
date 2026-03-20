@@ -1,16 +1,6 @@
 <div class="sidebar" id="sidebar">
 
-    <!-- BOTÃO -->
-    <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
-
-    <div>
-        <h2 class="logo text">NeoFleet</h2>
-
-        <hr>
-
-        <nav>
-
-            <!-- DASHBOARD -->
+<!-- DASHBOARD -->
             <a href="/dashboard" class="<?= $_SERVER['REQUEST_URI'] == '/dashboard' ? 'active' : '' ?>">
                 <span class="text">Dashboard</span>
             </a>
