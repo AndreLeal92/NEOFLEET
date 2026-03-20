@@ -10,6 +10,11 @@
 
         <nav>
 
+                    <!-- DASHBOARD -->
+            <a href="/dashboard" class="<?= $_SERVER['REQUEST_URI'] == '/dashboard' ? 'active' : '' ?>">
+                <span class="text">Dashboard</span>
+            </a>
+
          <!-- OPERAÇÃO -->
             <div class="dropdown">
 
@@ -25,11 +30,6 @@
                 </div>
 
             </div>
-
-            <!-- DASHBOARD -->
-            <a href="/dashboard" class="<?= $_SERVER['REQUEST_URI'] == '/dashboard' ? 'active' : '' ?>">
-                <span class="text">Dashboard</span>
-            </a>
 
             <!-- FROTA -->
             <div class="dropdown">
