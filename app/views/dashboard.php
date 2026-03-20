@@ -53,6 +53,12 @@ $basePath = dirname(__DIR__);
     border-radius:12px;
 }
 
+@media(max-width:768px){
+    .charts{
+        grid-template-columns:1fr;
+    }
+}
+
 </style>
 
 <div class="dashboard-cards">

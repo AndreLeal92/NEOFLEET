@@ -38,3 +38,6 @@
     </div>
 
 </div>
+
+<!-- OVERLAY MOBILE -->
+<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>

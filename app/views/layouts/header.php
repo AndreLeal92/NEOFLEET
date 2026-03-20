@@ -32,14 +32,14 @@ body{
     flex-direction:column;
     justify-content:space-between;
     transition:0.3s;
+    z-index:1000;
 }
 
-/* FECHADA */
+/* COLAPSADA */
 .sidebar.closed{
     width:70px;
 }
 
-/* ESCONDE TEXTO */
 .sidebar.closed .text{
     display:none;
 }
@@ -71,7 +71,7 @@ body{
     font-weight:bold;
 }
 
-/* BOTÃO TOGGLE */
+/* BOTÃO */
 .toggle-btn{
     position:absolute;
     top:20px;
@@ -123,6 +123,51 @@ hr{
     border:none;
     border-top:1px solid #334155;
     margin:15px 0;
+}
+
+/* OVERLAY */
+.overlay{
+    display:none;
+}
+
+/* MOBILE */
+@media (max-width:768px){
+
+    .sidebar{
+        transform:translateX(-100%);
+    }
+
+    .sidebar.open{
+        transform:translateX(0);
+    }
+
+    .content{
+        margin-left:0;
+    }
+
+    .toggle-btn{
+        position:fixed;
+        top:15px;
+        left:15px;
+        right:auto;
+        z-index:1100;
+    }
+
+    .overlay{
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,0.5);
+        display:none;
+        z-index:900;
+    }
+
+    .overlay.active{
+        display:block;
+    }
+
 }
 
 </style>
