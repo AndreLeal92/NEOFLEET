@@ -1,10 +1,10 @@
 <?php
 
 // ============================
-// BASE PATH (ESSENCIAL)
+// BASE PATH (CORRIGIDO)
 // ============================
 
-define('BASE_PATH', dirname(__DIR__));
+define('BASE_PATH', realpath(__DIR__ . '/../'));
 
 // ============================
 // CONFIG
@@ -29,14 +29,14 @@ if (session_status() === PHP_SESSION_NONE) {
 // ============================
 
 require_once BASE_PATH . '/core/Router.php';
-require_once BASE_PATH . '/core/CSRF.php'; // ✅ CORRIGIDO
+require_once BASE_PATH . '/core/CSRF.php'; // ✅ AGORA FUNCIONA
 require_once BASE_PATH . '/config/Database.php';
 
 // ============================
-// CSRF GLOBAL (PROTEÇÃO)
+// CSRF GLOBAL
 // ============================
 
-CSRF::validate(); // 🔥 protege todos POST automaticamente
+CSRF::validate();
 
 // ============================
 // CONTROLLERS
@@ -69,20 +69,16 @@ function auth()
 // ROTAS
 // ============================
 
-// LOGIN
 $router->get('/login', [$auth, 'loginForm']);
 $router->post('/login', [$auth, 'authenticate']);
 
-// LOGOUT
 $router->get('/logout', [$auth, 'logout']);
 
-// ROOT
 $router->get('/', function () {
     header("Location: /login");
     exit;
 });
 
-// DASHBOARD
 $router->get('/dashboard', function () use ($dashboard) {
     auth();
     $dashboard->index();
