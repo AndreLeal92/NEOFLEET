@@ -22,7 +22,7 @@
                 </a>
                 <div class="dropdown-menu">
                     <a href="#">Nova Viagem</a>
-                    <a href="#">Lançamento Custos</a>
+                    <a href="#">Lançamento Despesas da Viagem</a>
                     <a href="#">Relação de Viagens</a>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                 </a>
                 <div class="dropdown-menu">
                     <a href="/drivers/create">Cadastrar</a>
-                    <a href="/drivers">Lista</a>
+                    <a href="/drivers">Lista de Motoristas</a>
                 </div>
             </div>
 
@@ -60,8 +60,8 @@
                     <span class="arrow">▶</span>
                 </a>
                 <div class="dropdown-menu">
-                    <a href="/fuel/create">Novo</a>
-                    <a href="/fuel">Histórico</a>
+                    <a href="/fuel/create">Novo Abastecimento</a>
+                    <a href="/fuel">Histórico de Abastecimentos</a>
                 </div>
             </div>
 
@@ -72,8 +72,8 @@
                     <span class="arrow">▶</span>
                 </a>
                 <div class="dropdown-menu">
-                    <a href="#">Cadastrar</a>
-                    <a href="#">Lista</a>
+                    <a href="#">Cadastrar Novo Usuário</a>
+                    <a href="#">Lista de usuários</a>
                 </div>
             </div>
 
