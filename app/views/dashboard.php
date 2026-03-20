@@ -8,7 +8,7 @@ $basePath = dirname(__DIR__);
 <div class="content">
 
 <h1 style="margin-bottom:10px;">Dashboard</h1>
-<p>Bem-vindo, <?= $_SESSION['user']['email'] ?? '' ?></p>
+<p>Bem-vindo,</p>
 
 <hr>
 
@@ -69,6 +69,7 @@ $basePath = dirname(__DIR__);
 <div class="card purple"><div><h3>Viagens</h3><p><?= $trips ?? 0 ?></p></div>🛣️</div>
 <div class="card red"><div><h3>Despesas</h3><p><?= $expenses ?? 0 ?></p></div>💰</div>
 <div class="card dark"><div><h3>Custo por KM</h3><p>R$ <?= number_format($realCost['cost_per_km'] ?? 0,2,',','.') ?></p></div>📊</div>
+<div class="card dark"><div><h3>Custo por KG</h3><p>R$ <?= number_format($realCost['cost_per_km'] ?? 0,2,',','.') ?></p></div>📊</div>
 
 </div>
 
