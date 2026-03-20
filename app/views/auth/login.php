@@ -3,26 +3,20 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// 🔒 CSRF TOKEN
-if (empty($_SESSION['csrf'])) {
-    $_SESSION['csrf'] = bin2hex(random_bytes(32));
-}
+require_once __DIR__ . '/../../core/CSRF.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>NeoFleet - Login</title>
 
 <link rel="icon" type="image/png" href="/assets/images/world.png">
 <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/login.css?v=3">
-
 </head>
 
 <body>
@@ -39,15 +33,15 @@ if (empty($_SESSION['csrf'])) {
 
 <h1>Login</h1>
 
-<!-- 🔥 ERRO -->
+<!-- ERRO -->
 <?php if (!empty($_SESSION['error'])): ?>
-    <div style="background:#ef4444;color:#fff;padding:10px;border-radius:8px;margin-bottom:10px;">
-        <?= $_SESSION['error']; unset($_SESSION['error']); ?>
-    </div>
+<div style="background:#ef4444;color:#fff;padding:10px;border-radius:8px;margin-bottom:10px;">
+<?= $_SESSION['error']; unset($_SESSION['error']); ?>
+</div>
 <?php endif; ?>
 
-<!-- 🔒 CSRF -->
-<input type="hidden" name="csrf" value="<?= $_SESSION['csrf'] ?>">
+<!-- ✅ CSRF CORRETO -->
+<?= CSRF::input(); ?>
 
 <div class="input-box">
 <input type="email" name="email" placeholder="Usuário" required>
@@ -55,13 +49,7 @@ if (empty($_SESSION['csrf'])) {
 </div>
 
 <div class="input-box">
-<input 
-type="password"
-name="password"
-placeholder="Senha"
-required
-id="password"
->
+<input type="password" name="password" placeholder="Senha" required id="password">
 <i class='bx bx-hide' id="togglePassword"></i>
 </div>
 
@@ -69,7 +57,6 @@ id="password"
 <label>
 <input type="checkbox" name="remember"> Lembrar Minha Senha
 </label>
-
 <a href="#">Esqueceu sua Senha?</a>
 </div>
 
