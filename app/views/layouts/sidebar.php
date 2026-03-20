@@ -1,5 +1,8 @@
 <div class="sidebar" id="sidebar">
 
+    <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
+
+    <div>
         <h2 class="logo text">NeoFleet</h2>
 
         <hr>
