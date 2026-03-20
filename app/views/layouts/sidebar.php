@@ -25,6 +25,7 @@
 
                 <div class="dropdown-menu">
                     <a href="/vehicles/create">Cadastrar Veículos</a>
+                    <a href="/vehicles/create">Atrelar Cavalo & Carreta</a>
                     <a href="/vehicles">Relação de Veículos</a>
                 </div>
 
