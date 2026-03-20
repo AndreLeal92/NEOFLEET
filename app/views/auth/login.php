@@ -1,3 +1,14 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// 🔒 CSRF TOKEN
+if (empty($_SESSION['csrf'])) {
+    $_SESSION['csrf'] = bin2hex(random_bytes(32));
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -9,9 +20,7 @@
 <title>NeoFleet - Login</title>
 
 <link rel="icon" type="image/png" href="/assets/images/world.png">
-
 <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-
 <link rel="stylesheet" href="/assets/css/login.css?v=3">
 
 </head>
@@ -30,13 +39,22 @@
 
 <h1>Login</h1>
 
+<!-- 🔥 ERRO -->
+<?php if (!empty($_SESSION['error'])): ?>
+    <div style="background:#ef4444;color:#fff;padding:10px;border-radius:8px;margin-bottom:10px;">
+        <?= $_SESSION['error']; unset($_SESSION['error']); ?>
+    </div>
+<?php endif; ?>
+
+<!-- 🔒 CSRF -->
+<input type="hidden" name="csrf" value="<?= $_SESSION['csrf'] ?>">
+
 <div class="input-box">
 <input type="email" name="email" placeholder="Usuário" required>
 <i class='bx bxs-user'></i>
 </div>
 
 <div class="input-box">
-
 <input 
 type="password"
 name="password"
@@ -44,19 +62,15 @@ placeholder="Senha"
 required
 id="password"
 >
-
 <i class='bx bx-hide' id="togglePassword"></i>
-
 </div>
 
 <div class="Remember-forgot">
-
 <label>
 <input type="checkbox" name="remember"> Lembrar Minha Senha
 </label>
 
 <a href="#">Esqueceu sua Senha?</a>
-
 </div>
 
 <button type="submit">Login</button>
