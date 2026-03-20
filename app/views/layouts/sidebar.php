@@ -43,6 +43,7 @@
                     <a href="/vehicles/create">Cadastrar Veículos</a>
                     <a href="/vehicles/create">Atrelar Cavalo & Carreta</a>
                     <a href="/vehicles">Relação de Veículos</a>
+                    <a href="/vehicles">Despesas Fixas</a>
                 </div>
 
             </div>
