@@ -1,6 +1,12 @@
 <?php
 
 // ============================
+// BASE PATH (ESSENCIAL)
+// ============================
+
+define('BASE_PATH', dirname(__DIR__));
+
+// ============================
 // CONFIG
 // ============================
 
@@ -22,12 +28,12 @@ if (session_status() === PHP_SESSION_NONE) {
 // LOAD CORE
 // ============================
 
-require_once __DIR__ . '/../core/Router.php';
-require_once __DIR__ . '/../config/Database.php';
+require_once BASE_PATH . '/core/Router.php';
+require_once BASE_PATH . '/config/Database.php';
 
 // CONTROLLERS
-require_once __DIR__ . '/../app/controllers/AuthController.php';
-require_once __DIR__ . '/../app/controllers/DashboardController.php';
+require_once BASE_PATH . '/app/controllers/AuthController.php';
+require_once BASE_PATH . '/app/controllers/DashboardController.php';
 
 // ============================
 // INSTANCES

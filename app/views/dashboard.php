@@ -1,49 +1,32 @@
-<?php require __DIR__ . '/layouts/header.php'; ?>
-<?php require __DIR__ . '/layouts/sidebar.php'; ?>
+<?php
+$basePath = dirname(__DIR__); // volta de /views para /app
+?>
 
-<div class="content" style="margin-left:220px; padding:30px; background:#f8fafc; min-height:100vh;">
+<?php require $basePath . '/views/layouts/header.php'; ?>
+<?php require $basePath . '/views/layouts/sidebar.php'; ?>
 
-    <h1 style="margin-bottom:10px;">Dashboard</h1>
+<div class="content">
 
-    <p style="color:#64748b; margin-bottom:30px;">
-        Bem-vindo, <strong><?= $_SESSION['user']['email'] ?></strong>
-    </p>
+    <h1>Dashboard</h1>
 
-    <hr style="margin-bottom:30px;">
+    <p>Bem-vindo, <?= $_SESSION['user']['email'] ?></p>
 
-    <!-- CARDS -->
-    <div style="display:flex; gap:20px; flex-wrap:wrap;">
+    <hr>
 
-        <div style="background:#fff; padding:20px; width:220px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.05);">
-            <h4 style="color:#64748b;">Veículos</h4>
-            <h2 style="margin-top:10px;">0</h2>
+    <div style="display:flex; gap:20px;">
+
+        <div style="background:#f1f5f9; padding:20px; width:200px;">
+            <h3>Veículos</h3>
+            <p>0</p>
         </div>
 
-        <div style="background:#fff; padding:20px; width:220px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.05);">
-            <h4 style="color:#64748b;">Motoristas</h4>
-            <h2 style="margin-top:10px;">0</h2>
+        <div style="background:#f1f5f9; padding:20px; width:200px;">
+            <h3>Motoristas</h3>
+            <p>0</p>
         </div>
 
-        <div style="background:#fff; padding:20px; width:220px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.05);">
-            <h4 style="color:#64748b;">Viagens</h4>
-            <h2 style="margin-top:10px;">0</h2>
-        </div>
-
-        <div style="background:#fff; padding:20px; width:220px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.05);">
-            <h4 style="color:#64748b;">Usuários</h4>
-            <h2 style="margin-top:10px;">1</h2>
-        </div>
-
-    </div>
-
-    <!-- SEÇÃO EXTRA -->
-    <div style="margin-top:40px; background:#fff; padding:20px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.05);">
-        <h3>Resumo do Sistema</h3>
-        <p style="color:#64748b;">
-            Aqui você poderá acompanhar métricas, atividades recentes e dados da sua frota.
-        </p>
     </div>
 
 </div>
 
-<?php require __DIR__ . '/layouts/footer.php'; ?>
+<?php require $basePath . '/views/layouts/footer.php'; ?>
