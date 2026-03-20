@@ -170,6 +170,16 @@ hr{
 
 }
 
+/* LOGOUT (SAIR) */
+.sidebar .logout{
+    color:#ef4444;
+}
+
+.sidebar .logout:hover{
+    background:#7f1d1d;
+    color:#fff;
+}
+
 </style>
 
 </head>
