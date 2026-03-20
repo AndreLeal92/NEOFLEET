@@ -60,6 +60,21 @@
 
             </div>
 
+       <!-- USUÁRIOS -->
+            <div class="dropdown">
+
+                <a href="javascript:void(0)" onclick="toggleDropdown(this)">
+                    <span class="text">Usuários</span>
+                    <span class="arrow">▶</span>
+                </a>
+
+                <div class="dropdown-menu">
+                    <a href="/drivers/create">Cadastrar Usuários</a>
+                    <a href="/drivers">Lista de Usuários</a>
+                </div>
+
+            </div>
+
         </nav>
     </div>
 
