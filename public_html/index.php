@@ -30,8 +30,18 @@ if (session_status() === PHP_SESSION_NONE) {
 
 require_once BASE_PATH . '/core/Router.php';
 require_once BASE_PATH . '/config/Database.php';
+require_once BASE_PATH . '/app/core/CSRF.php'; // 🔥 NOVO
 
+// ============================
+// CSRF GLOBAL (PROTEÇÃO)
+// ============================
+
+CSRF::validate(); // 🔥 valida todos POST automaticamente
+
+// ============================
 // CONTROLLERS
+// ============================
+
 require_once BASE_PATH . '/app/controllers/AuthController.php';
 require_once BASE_PATH . '/app/controllers/DashboardController.php';
 
