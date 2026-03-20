@@ -1,110 +1,93 @@
+<!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
 
-    <!-- BOTÃO -->
     <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
 
-    <div>
+    <div class="sidebar-top">
         <h2 class="logo text">NeoFleet</h2>
-
         <hr>
 
         <nav>
 
-                    <!-- DASHBOARD -->
+            <!-- DASHBOARD -->
             <a href="/dashboard" class="<?= $_SERVER['REQUEST_URI'] == '/dashboard' ? 'active' : '' ?>">
                 <span class="text">Dashboard</span>
             </a>
 
-         <!-- OPERAÇÃO -->
+            <!-- OPERAÇÃO -->
             <div class="dropdown">
-
                 <a href="javascript:void(0)" onclick="toggleDropdown(this)">
                     <span class="text">Operação</span>
                     <span class="arrow">▶</span>
                 </a>
-
                 <div class="dropdown-menu">
-                    <a href="/vehicles/create">Nova Viagem</a>
-                    <a href="/vehicles/create">Lançamento Custos Viagens</a>
-                    <a href="/vehicles">Relação de Viagens</a>
+                    <a href="#">Nova Viagem</a>
+                    <a href="#">Lançamento Custos</a>
+                    <a href="#">Relação de Viagens</a>
                 </div>
-
             </div>
 
             <!-- FROTA -->
             <div class="dropdown">
-
                 <a href="javascript:void(0)" onclick="toggleDropdown(this)">
                     <span class="text">Frota</span>
                     <span class="arrow">▶</span>
                 </a>
-
                 <div class="dropdown-menu">
                     <a href="/vehicles/create">Cadastrar Veículos</a>
-                    <a href="/vehicles/create">Atrelar Cavalo & Carreta</a>
+                    <a href="#">Atrelar Cavalo & Carreta</a>
                     <a href="/vehicles">Relação de Veículos</a>
-                    <a href="/vehicles">Despesas Fixas</a>
+                    <a href="#">Despesas Fixas</a>
                 </div>
-
             </div>
 
             <!-- MOTORISTAS -->
             <div class="dropdown">
-
                 <a href="javascript:void(0)" onclick="toggleDropdown(this)">
                     <span class="text">Motoristas</span>
                     <span class="arrow">▶</span>
                 </a>
-
                 <div class="dropdown-menu">
-                    <a href="/drivers/create">Cadastrar Motorista</a>
-                    <a href="/drivers">Lista de Motoristas</a>
+                    <a href="/drivers/create">Cadastrar</a>
+                    <a href="/drivers">Lista</a>
                 </div>
-
             </div>
 
             <!-- ABASTECIMENTOS -->
             <div class="dropdown">
-
                 <a href="javascript:void(0)" onclick="toggleDropdown(this)">
                     <span class="text">Abastecimentos</span>
                     <span class="arrow">▶</span>
                 </a>
-
                 <div class="dropdown-menu">
-                    <a href="/fuel/create">Novo Abastecimento</a>
+                    <a href="/fuel/create">Novo</a>
                     <a href="/fuel">Histórico</a>
                 </div>
-
             </div>
 
-       <!-- USUÁRIOS -->
+            <!-- USUÁRIOS -->
             <div class="dropdown">
-
                 <a href="javascript:void(0)" onclick="toggleDropdown(this)">
                     <span class="text">Usuários</span>
                     <span class="arrow">▶</span>
                 </a>
-
                 <div class="dropdown-menu">
-                    <a href="/drivers/create">Cadastrar Usuários</a>
-                    <a href="/drivers">Lista de Usuários</a>
+                    <a href="#">Cadastrar</a>
+                    <a href="#">Lista</a>
                 </div>
-
             </div>
 
         </nav>
     </div>
 
     <!-- LOGOUT -->
-    <div>
+    <div class="sidebar-bottom">
         <hr>
-        <a href="/logout">
+        <a href="/logout" class="logout">
             <span class="text">Sair</span>
         </a>
     </div>
 
 </div>
 
-<!-- OVERLAY MOBILE -->
 <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
