@@ -1,24 +1,40 @@
-<div class="sidebar">
+<div class="sidebar" id="sidebar">
+
+    <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
 
     <div>
-        <h2 class="logo">NeoFleet</h2>
+        <h2 class="logo text">NeoFleet</h2>
 
         <hr>
 
         <nav>
+
             <a href="/dashboard" class="<?= $_SERVER['REQUEST_URI'] == '/dashboard' ? 'active' : '' ?>">
-                📊 Dashboard
+                📊 <span class="text">Dashboard</span>
             </a>
 
-            <a href="/vehicles" class="<?= $_SERVER['REQUEST_URI'] == '/vehicles' ? 'active' : '' ?>">
-                🚚 Veículos
-            </a>
+            <div class="dropdown">
+
+                <a href="javascript:void(0)" onclick="toggleDropdown(this)">
+                    🚚 <span class="text">Frota</span>
+                    <span class="arrow">▶</span>
+                </a>
+
+                <div class="dropdown-menu">
+                    <a href="/vehicles">Veículos</a>
+                    <a href="/drivers">Motoristas</a>
+                </div>
+
+            </div>
+
         </nav>
     </div>
 
     <div>
         <hr>
-        <a href="/logout" class="logout">🚪 Sair</a>
+        <a href="/logout">
+            🚪 <span class="text">Sair</span>
+        </a>
     </div>
 
 </div>
