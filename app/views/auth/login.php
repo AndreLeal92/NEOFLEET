@@ -2,21 +2,22 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
-require_once __DIR__ . '/../../core/CSRF.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>NeoFleet - Login</title>
 
 <link rel="icon" type="image/png" href="/assets/images/world.png">
 <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/login.css?v=3">
+
 </head>
 
 <body>
@@ -40,7 +41,7 @@ require_once __DIR__ . '/../../core/CSRF.php';
 </div>
 <?php endif; ?>
 
-<!-- ✅ CSRF CORRETO -->
+<!-- ✅ CSRF GLOBAL (CORRETO) -->
 <?= CSRF::input(); ?>
 
 <div class="input-box">
@@ -49,7 +50,13 @@ require_once __DIR__ . '/../../core/CSRF.php';
 </div>
 
 <div class="input-box">
-<input type="password" name="password" placeholder="Senha" required id="password">
+<input 
+type="password"
+name="password"
+placeholder="Senha"
+required
+id="password"
+>
 <i class='bx bx-hide' id="togglePassword"></i>
 </div>
 
@@ -57,6 +64,7 @@ require_once __DIR__ . '/../../core/CSRF.php';
 <label>
 <input type="checkbox" name="remember"> Lembrar Minha Senha
 </label>
+
 <a href="#">Esqueceu sua Senha?</a>
 </div>
 
