@@ -8,14 +8,12 @@ $basePath = dirname(__DIR__);
 <div class="content">
 
     <h1 style="margin-bottom:10px;">Dashboard</h1>
+    <p>Bem-vindo, <?= $_SESSION['user']['email'] ?? '' ?></p>
 
-    <p>Bem-vindo, <?= $_SESSION['user']['email'] ?></p>
-
-    <hr style="margin:20px 0;">
+    <hr>
 
     <style>
 
-    /* GRID DOS CARDS */
     .dashboard-cards{
         display:grid;
         grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
@@ -23,7 +21,6 @@ $basePath = dirname(__DIR__);
         margin-bottom:30px;
     }
 
-    /* CARD */
     .card{
         display:flex;
         justify-content:space-between;
@@ -39,7 +36,6 @@ $basePath = dirname(__DIR__);
         transform:translateY(-3px);
     }
 
-    /* CORES */
     .card.blue{ background:#3b82f6; }
     .card.green{ background:#10b981; }
     .card.orange{ background:#f59e0b; }
@@ -47,25 +43,19 @@ $basePath = dirname(__DIR__);
     .card.red{ background:#ef4444; }
     .card.dark{ background:#111827; }
 
-    /* TEXTO */
     .card-info h3{
-        margin:0;
         font-size:14px;
-        opacity:0.9;
     }
 
     .card-info p{
-        margin:5px 0 0;
         font-size:22px;
         font-weight:bold;
     }
 
-    /* ÍCONE */
     .card-icon{
         font-size:28px;
     }
 
-    /* GRÁFICOS */
     .charts{
         display:grid;
         grid-template-columns:1fr 1fr;
@@ -87,13 +77,12 @@ $basePath = dirname(__DIR__);
 
     </style>
 
-    <!-- CARDS -->
     <div class="dashboard-cards">
 
         <div class="card blue">
             <div class="card-info">
                 <h3>Veículos</h3>
-                <p><?= isset($vehicles) ? $vehicles : 0 ?></p>
+                <p><?= $vehicles ?? 0 ?></p>
             </div>
             <div class="card-icon">🚚</div>
         </div>
@@ -101,7 +90,7 @@ $basePath = dirname(__DIR__);
         <div class="card green">
             <div class="card-info">
                 <h3>Motoristas</h3>
-                <p><?= isset($drivers) ? $drivers : 0 ?></p>
+                <p><?= $drivers ?? 0 ?></p>
             </div>
             <div class="card-icon">👨‍✈️</div>
         </div>
@@ -109,7 +98,7 @@ $basePath = dirname(__DIR__);
         <div class="card orange">
             <div class="card-info">
                 <h3>Abastecimentos</h3>
-                <p><?= isset($fuel) ? $fuel : 0 ?></p>
+                <p><?= $fuel ?? 0 ?></p>
             </div>
             <div class="card-icon">⛽</div>
         </div>
@@ -117,7 +106,7 @@ $basePath = dirname(__DIR__);
         <div class="card purple">
             <div class="card-info">
                 <h3>Viagens</h3>
-                <p><?= isset($trips) ? $trips : 0 ?></p>
+                <p><?= $trips ?? 0 ?></p>
             </div>
             <div class="card-icon">🛣️</div>
         </div>
@@ -125,7 +114,7 @@ $basePath = dirname(__DIR__);
         <div class="card red">
             <div class="card-info">
                 <h3>Despesas</h3>
-                <p><?= isset($expenses) ? $expenses : 0 ?></p>
+                <p><?= $expenses ?? 0 ?></p>
             </div>
             <div class="card-icon">💰</div>
         </div>
@@ -133,16 +122,13 @@ $basePath = dirname(__DIR__);
         <div class="card dark">
             <div class="card-info">
                 <h3>Custo por KM</h3>
-                <p>
-                    R$ <?= number_format(isset($realCost['cost_per_km']) ? $realCost['cost_per_km'] : 0, 2, ',', '.') ?>
-                </p>
+                <p>R$ <?= number_format($realCost['cost_per_km'] ?? 0,2,',','.') ?></p>
             </div>
             <div class="card-icon">📊</div>
         </div>
 
     </div>
 
-    <!-- GRÁFICOS -->
     <div class="charts">
 
         <div class="chart-box">
@@ -159,7 +145,6 @@ $basePath = dirname(__DIR__);
 
 </div>
 
-<!-- Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>

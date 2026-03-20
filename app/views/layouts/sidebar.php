@@ -1,20 +1,22 @@
 <div class="sidebar">
 
-    <h2 class="logo">NeoFleet</h2>
+    <div>
+        <h2 class="logo">NeoFleet</h2>
 
-    <hr>
+        <hr>
 
-    <nav>
-        <a href="/dashboard" class="<?= $_SERVER['REQUEST_URI'] == '/dashboard' ? 'active' : '' ?>">
-            📊 Dashboard
-        </a>
+        <nav>
+            <a href="/dashboard" class="<?= $_SERVER['REQUEST_URI'] == '/dashboard' ? 'active' : '' ?>">
+                📊 Dashboard
+            </a>
 
-        <a href="/vehicles" class="<?= $_SERVER['REQUEST_URI'] == '/vehicles' ? 'active' : '' ?>">
-            🚚 Veículos
-        </a>
-    </nav>
+            <a href="/vehicles" class="<?= $_SERVER['REQUEST_URI'] == '/vehicles' ? 'active' : '' ?>">
+                🚚 Veículos
+            </a>
+        </nav>
+    </div>
 
-    <div class="bottom">
+    <div>
         <hr>
         <a href="/logout" class="logout">🚪 Sair</a>
     </div>
