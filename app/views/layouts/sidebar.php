@@ -19,13 +19,16 @@
                     🚚 <span class="text">Frota</span>
                     <span class="arrow">▶</span>
                 </a>
+                <div class="dropdown-menu">
+                    <a href="/vehicles">Veículos</a>
+                </div>
+                
                 <a href="javascript:void(0)" onclick="toggleDropdown(this)">
                      <span class="text">Motoristas</span>
                     <span class="arrow">▶</span>
                 </a>
 
                 <div class="dropdown-menu">
-                    <a href="/vehicles">Veículos</a>
                     <a href="/drivers">Motoristas</a>
                 </div>
 
