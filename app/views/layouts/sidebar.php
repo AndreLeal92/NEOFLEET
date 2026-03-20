@@ -13,23 +13,30 @@
                 📊 <span class="text">Dashboard</span>
             </a>
 
+            <!-- 🔽 FROTA -->
             <div class="dropdown">
 
                 <a href="javascript:void(0)" onclick="toggleDropdown(this)">
                     🚚 <span class="text">Frota</span>
                     <span class="arrow">▶</span>
                 </a>
+
                 <div class="dropdown-menu">
                     <a href="/vehicles">Veículos</a>
                 </div>
-                
+
+            </div>
+
+            <!-- 🔽 MOTORISTAS -->
+            <div class="dropdown">
+
                 <a href="javascript:void(0)" onclick="toggleDropdown(this)">
-                     <span class="text">Motoristas</span>
+                    👨‍✈️ <span class="text">Motoristas</span>
                     <span class="arrow">▶</span>
                 </a>
 
                 <div class="dropdown-menu">
-                    <a href="/drivers">Motoristas</a>
+                    <a href="/drivers">Lista de Motoristas</a>
                 </div>
 
             </div>
@@ -46,5 +53,4 @@
 
 </div>
 
-<!-- OVERLAY MOBILE -->
 <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
