@@ -6,16 +6,27 @@ class AuthController {
 
     public function login() {
 
-        if (session_status() === PHP_SESSION_NONE) {
+        // Garante sessão
+        if (session_status() !== PHP_SESSION_ACTIVE) {
             session_start();
         }
 
-        $email = trim($_POST['email'] ?? '');
+        // Sanitiza entrada
+        $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         $password = $_POST['password'] ?? '';
+
+        if (!$email || !$password) {
+            header('Location: /login?error=1');
+            exit;
+        }
 
         $user = User::findByEmail($email);
 
+        // Verifica senha
         if ($user && password_verify($password, $user['password'])) {
+
+            // Proteção contra session fixation
+            session_regenerate_id(true);
 
             $_SESSION['user'] = [
                 'id' => $user['id'],
@@ -27,13 +38,36 @@ class AuthController {
             exit;
         }
 
-        header('Location: /?error=1');
+        header('Location: /login?error=1');
         exit;
     }
 
     public function logout() {
+
+        if (session_status() !== PHP_SESSION_ACTIVE) {
+            session_start();
+        }
+
+        // Limpa sessão completamente
+        $_SESSION = [];
+
+        // Remove cookie de sessão
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(
+                session_name(),
+                '',
+                time() - 42000,
+                $params["path"],
+                $params["domain"],
+                $params["secure"],
+                $params["httponly"]
+            );
+        }
+
         session_destroy();
-        header('Location: /');
+
+        header('Location: /login');
         exit;
     }
 }

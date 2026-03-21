@@ -4,24 +4,35 @@ class Router {
 
     private $routes = [];
 
-    public function get($uri, $callback) {
-        $this->routes['GET'][$uri] = $callback;
+    public function get($uri, $action) {
+        $this->addRoute('GET', $uri, $action);
     }
 
-    public function post($uri, $callback) {
-        $this->routes['POST'][$uri] = $callback;
+    public function post($uri, $action) {
+        $this->addRoute('POST', $uri, $action);
     }
 
-    public function dispatch($uri) {
+    private function addRoute($method, $uri, $action) {
+        $this->routes[$method][$uri] = $action;
+    }
 
-        $uri = parse_url($uri, PHP_URL_PATH);
-        $method = $_SERVER['REQUEST_METHOD'];
+    public function dispatch($uri, $method) {
 
+        // remove barra final
         $uri = rtrim($uri, '/') ?: '/';
 
         if (isset($this->routes[$method][$uri])) {
-            call_user_func($this->routes[$method][$uri]);
-            return;
+
+            $action = $this->routes[$method][$uri];
+
+            if (is_callable($action)) {
+                return $action();
+            }
+
+            if (is_array($action)) {
+                [$controller, $method] = $action;
+                return $controller->$method();
+            }
         }
 
         http_response_code(404);
