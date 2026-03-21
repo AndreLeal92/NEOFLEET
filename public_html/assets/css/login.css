@@ -16,7 +16,9 @@ align-items:center;
 justify-content:flex-start;
 min-height:100vh;
 padding:20px;
-background:linear-gradient(135deg,#e5e5e5,#cfcfcf);
+
+/* 🔵 FUNDO AZUL */
+background:linear-gradient(135deg,#3b82f6,#2563eb);
 }
 
 /* LOGO LOGIN */
@@ -40,15 +42,15 @@ width:100%;
 max-width:420px;
 padding:35px;
 
-background:rgba(255,255,255,0.35);
+background:rgba(255,255,255,0.25);
 backdrop-filter:blur(18px);
 -webkit-backdrop-filter:blur(18px);
 
 border-radius:18px;
 
 box-shadow:
-0 20px 45px rgba(0,0,0,0.15),
-inset 0 1px 0 rgba(255,255,255,0.5);
+0 20px 45px rgba(0,0,0,0.25),
+inset 0 1px 0 rgba(255,255,255,0.4);
 
 animation:fadeUp 0.8s ease;
 }
@@ -56,6 +58,7 @@ animation:fadeUp 0.8s ease;
 .container h1{
 font-size:30px;
 margin-bottom:20px;
+color:#111827;
 }
 
 /* INPUT */
@@ -81,7 +84,7 @@ transition:0.25s;
 
 .input-box input:focus{
 border:1px solid #3b82f6;
-box-shadow:0 0 0 3px rgba(59,130,246,0.15);
+box-shadow:0 0 0 3px rgba(59,130,246,0.25);
 }
 
 .input-box i{
@@ -90,6 +93,7 @@ right:18px;
 top:50%;
 transform:translateY(-50%);
 font-size:18px;
+color:#6b7280;
 }
 
 /* LEMBRAR SENHA */
@@ -111,6 +115,7 @@ gap:6px;
 .Remember-forgot a{
 text-decoration:none;
 color:#2563eb;
+font-weight:500;
 }
 
 .Remember-forgot a:hover{
@@ -135,7 +140,7 @@ transition:0.25s;
 
 button:hover{
 transform:translateY(-2px);
-box-shadow:0 8px 18px rgba(59,130,246,0.35);
+box-shadow:0 8px 18px rgba(59,130,246,0.45);
 }
 
 /* LINK CADASTRO */
@@ -225,7 +230,10 @@ transform:translateY(0);
 .sidebar{
 width:250px;
 height:100vh;
-background:#111827;
+
+/* 🔵 sidebar escura moderna */
+background:#1e293b;
+
 color:white;
 position:fixed;
 left:0;
@@ -241,7 +249,7 @@ display:flex;
 justify-content:center;
 align-items:center;
 height:120px;
-border-bottom:1px solid #2a2a2a;
+border-bottom:1px solid #334155;
 overflow:hidden;
 }
 
