@@ -10,12 +10,12 @@ $router->get('/', function() {
     require BASE_PATH . '/public_html/login.php';
 });
 
-/* LOGIN (GET = tela) */
+/* LOGIN (GET) */
 $router->get('/login', function() {
     require BASE_PATH . '/public_html/login.php';
 });
 
-/* LOGIN (POST = processa) */
+/* LOGIN (POST) */
 $router->post('/login', [$auth, 'login']);
 
 /* LOGOUT */
