@@ -1,8 +1,0 @@
-RewriteEngine On
-
-# Se não for arquivo real
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-
-# Vai para index.php (MVC)
-RewriteRule ^ index.php [L]
