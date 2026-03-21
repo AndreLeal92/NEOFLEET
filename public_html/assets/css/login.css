@@ -313,3 +313,7 @@ font-size:18px;
 font-size:28px;
 font-weight:bold;
 }
+
+body {
+    background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+}
