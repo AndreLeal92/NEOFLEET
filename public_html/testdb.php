@@ -1,6 +1,8 @@
 <?php
 
-require __DIR__ . '/../core/Database.php';
+define('BASE_PATH', dirname(__DIR__));
+
+require BASE_PATH . '/core/Database.php';
 
 $pdo = Database::connect();
 
