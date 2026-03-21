@@ -1,7 +1,13 @@
 RewriteEngine On
 DirectoryIndex index.php
 
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+# Se for arquivo real → não reescreve
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
 
+# Se for diretório real → não reescreve
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Tudo o resto vai pro index.php
 RewriteRule ^ index.php [L]

@@ -17,7 +17,6 @@ class Router {
         $uri = parse_url($requestUri, PHP_URL_PATH);
         $method = $_SERVER['REQUEST_METHOD'];
 
-        // remove barra final
         $uri = rtrim($uri, '/') ?: '/';
 
         if (isset($this->routes[$method][$uri])) {

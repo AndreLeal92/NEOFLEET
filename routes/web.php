@@ -20,5 +20,11 @@ $router->post('/login', function() {
 });
 
 $router->get('/dashboard', function() {
+
+    if (!isset($_SESSION['user'])) {
+        header('Location: /');
+        exit;
+    }
+
     echo "LOGADO COM SUCESSO 🚀";
 });

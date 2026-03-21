@@ -2,16 +2,14 @@
 
 session_start();
 
-// Caminho base do projeto
 define('BASE_PATH', dirname(__DIR__));
 
-// Autoload simples
+// Router
 require BASE_PATH . '/core/Router.php';
 
-// Instancia router
 $router = new Router();
 
-// Importa rotas
+// Rotas
 require BASE_PATH . '/routes/web.php';
 
 // Executa
