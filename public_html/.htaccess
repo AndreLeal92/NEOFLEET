@@ -1,11 +1,7 @@
 RewriteEngine On
-
-# Define o arquivo principal
 DirectoryIndex index.php
 
-# Se NÃO for arquivo ou pasta real...
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-# Redireciona tudo para o index.php (Front Controller)
 RewriteRule ^ index.php [L]
