@@ -12,9 +12,9 @@ class Router {
         $this->routes['POST'][$uri] = $callback;
     }
 
-    public function dispatch($requestUri) {
+    public function dispatch($uri) {
 
-        $uri = parse_url($requestUri, PHP_URL_PATH);
+        $uri = parse_url($uri, PHP_URL_PATH);
         $method = $_SERVER['REQUEST_METHOD'];
 
         $uri = rtrim($uri, '/') ?: '/';

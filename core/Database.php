@@ -2,26 +2,21 @@
 
 class Database {
 
-    private static $instance = null;
+    private static $instance;
 
     public static function connect() {
 
-        if (self::$instance === null) {
+        if (!self::$instance) {
 
             $config = require BASE_PATH . '/config/Database.php';
 
-            try {
-                self::$instance = new PDO(
-                    "mysql:host={$config['host']};dbname={$config['dbname']};charset=utf8",
-                    $config['user'],
-                    $config['pass']
-                );
+            self::$instance = new PDO(
+                "mysql:host={$config['host']};dbname={$config['dbname']};charset=utf8",
+                $config['user'],
+                $config['pass']
+            );
 
-                self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            } catch (PDOException $e) {
-                die("Erro DB: " . $e->getMessage());
-            }
+            self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
 
         return self::$instance;

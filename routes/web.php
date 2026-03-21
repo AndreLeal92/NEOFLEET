@@ -1,7 +1,7 @@
 <?php
 
-require BASE_PATH . '/app/controllers/AuthController.php';
-require BASE_PATH . '/app/middleware/AuthMiddleware.php';
+require_once BASE_PATH . '/app/controllers/AuthController.php';
+require_once BASE_PATH . '/app/middleware/AuthMiddleware.php';
 
 $auth = new AuthController();
 
