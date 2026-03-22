@@ -21,8 +21,7 @@ body {
     min-height: 100vh;
     padding: 20px;
 
-    /* 🔵 FUNDO AZUL */
-    background: linear-gradient(135deg, #073d95, #0c265f);
+    background: linear-gradient(135deg, #020617, #1b0894, #1e3a8a);
 }
 
 /* ============================== */
