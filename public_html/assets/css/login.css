@@ -24,6 +24,16 @@ body {
     background: linear-gradient(135deg, #020617, #1b0894, #1e3a8a);
 }
 
+.login-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background: transparent; /* 🔥 importante */
+}
+
 /* ============================== */
 /* LOGO LOGIN */
 /* ============================== */

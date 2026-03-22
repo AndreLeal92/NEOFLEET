@@ -45,7 +45,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 <i class='bx bx-hide' id="togglePassword"></i>
             </div>
 
-            <div class="Remember-forgot">
+            <div class="remember-forgot">
                 <label>
                     <input type="checkbox"> Lembrar minha senha
                 </label>
