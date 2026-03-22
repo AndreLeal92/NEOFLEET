@@ -22,7 +22,7 @@ if (session_status() === PHP_SESSION_NONE) {
 <div class="login-wrapper">
 
     <div class="logo">
-        <img src="assets/images/Neofleet.png" alt="NeoFleet">
+        <img src="assets/images/Neofleet.png" alt="NeoFleet_branco">
     </div>
 
     <main class="container">
